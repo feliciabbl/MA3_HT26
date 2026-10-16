@@ -13,7 +13,6 @@ import concurrent.futures as future
 from statistics import mean 
 from time import perf_counter as pc
 from numba import njit, prange
-import numpy as np
 
 # Exc1
 def approximate_pi(n):
@@ -110,7 +109,7 @@ def sphere_volume_numba_parallel(n: int, d: int) -> float:
     return (inne / n) * (2**d)
     
 def main():
-    """# Exc1
+    # Exc1
     dots = [1000, 10000, 100000]
     for n in dots:
         approximate_pi(n)
@@ -145,7 +144,7 @@ def main():
 
     print(f"Exc3: Sequential time of {d} and {n}: {stop-start}")
     print(f'Sequential time (s): {[round(t, 3) for t in tider]}')
-    print(f'Sequential time (s): {[round(t, 3) for t in tider_n]}')"""
+    print(f'Sequential time numba (s): {[round(t, 3) for t in tider_n]}')
 
 
 
@@ -153,7 +152,7 @@ def main():
     n = 1000000
     d = 11
     start = pc()
-    sphere_volume_numba_parallel(n, d)
+    sphere_volume(n, d)
     stop = pc()
     tid_seq = stop-start
     print(f"Exc4: Sequential time of {d} and {n}: {tid_seq: .4f} s")
